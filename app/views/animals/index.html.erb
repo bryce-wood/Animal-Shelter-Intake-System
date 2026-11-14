@@ -4,13 +4,22 @@
 
 <h1>Animals</h1>
 
-<div id="animals">
-  <% @animals.each do |animal| %>
-    <%= render animal %>
-    <p>
-      <%= link_to "Show this animal", animal %>
-    </p>
-  <% end %>
-</div>
+<% if @animals.present? %>
+  <p><%= pluralize(@animals.size, "animal") %> on record.</p>
 
-<%= link_to "New animal", new_animal_path %>
+  <%= link_to "New animal", new_animal_path %>
+
+  <ul id="animals">
+    <% @animals.each do |animal| %>
+    <li>
+      <%= render animal %>
+      <p>
+        <%= link_to "Show this animal", animal %>
+      </p>
+    </li>
+    <% end %>
+  </ul>
+<% else %>
+  <p>We currently have no animals on record.</p>
+  <%= link_to "Add the first animal", new_animal_path %>
+<% end %>
