@@ -1,52 +1,28 @@
 <div id="<%= dom_id animal %>">
   <div>
-    <strong>Name:</strong>
-    <%= animal.name %>
+    <strong><%= link_to "#{animal.name} the #{animal.species}", animal %></strong>
+    <% if animal.sex.present? %>
+      (<%= animal.sex %>)
+    <% end %>
+    <% if animal.breed.present? %>
+      is a <%= animal.breed %>
+    <% end %>
   </div>
 
   <div>
-    <strong>Species:</strong>
-    <%= animal.species %>
-  </div>
-
-  <div>
-    <strong>Sex:</strong>
-    <%= animal.sex %>
-  </div>
-
-  <div>
-    <strong>Breed:</strong>
-    <%= animal.breed %>
-  </div>
-
-  <div>
-    <strong>Age in months:</strong>
-    <%= animal.age_in_months %>
-  </div>
-
-  <div>
-    <strong>Vaccinated:</strong>
-    <%= animal.vaccinated %>
-  </div>
-
-  <div>
-    <strong>Sterilized:</strong>
-    <%= animal.sterilized %>
-  </div>
-
-  <div>
-    <strong>Intake date:</strong>
-    <%= animal.intake_date %>
+    <% if animal.age_in_months.present? %>
+      <%= animal.name %> is <%= pluralize(animal.age_in_months, "month") %> old.
+    <% end %>
+    <% if animal.intake_date.present? %>
+      We received <%= animal.name %> on <%= animal.intake_date %>
+    <% end %>
   </div>
 
   <div>
     <strong>Adoption status:</strong>
-    <%= animal.adoption_status %>
+    <%= status_to_readable(animal) %>
   </div>
 
   <div>
-    <strong>Notes:</strong>
-    <%= animal.notes %>
+    <em>(Entry created <%= time_ago_in_words(animal.created_at) %> ago)</em>
   </div>
-
-</div>
