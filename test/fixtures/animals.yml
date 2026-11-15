@@ -3,23 +3,23 @@
 one:
   name: MyString
   species: MyString
-  sex: MyString
+  sex: M
   breed: MyString
   age_in_months: 1
   vaccinated: false
   sterilized: false
   intake_date: 2026-11-12
-  adoption_status: MyString
+  adoption_status: available
   notes: MyText
 
 two:
   name: MyString
   species: MyString
-  sex: MyString
+  sex: F
   breed: MyString
   age_in_months: 1
   vaccinated: false
   sterilized: false
   intake_date: 2026-11-12
-  adoption_status: MyString
+  adoption_status: adopted
   notes: MyText

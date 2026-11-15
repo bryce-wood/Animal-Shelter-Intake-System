@@ -24,9 +24,8 @@ module AnimalsHelper
   end
 
   def format_age(animal)
-    if (!animal.age_in_months.present?)
-      return "Unknown"
-    end
+    return "unknown" if animal.age_in_months.blank?
+    
     months = animal.age_in_months
     years = months / 12
     months = months % 12
@@ -35,7 +34,7 @@ module AnimalsHelper
     builder << "#{years} #{'year'.pluralize(years)}" if years > 0
     builder << "#{months} #{'month'.pluralize(months)}" if months > 0
     
-    builder.empty? ? "Less than a month old" : builder.join(" and ") + " old"
+    builder.empty? ? "less than a month old" : builder.join(" and ") + " old"
   end
 
   def display_name(animal)

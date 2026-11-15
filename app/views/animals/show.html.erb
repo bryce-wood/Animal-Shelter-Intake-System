@@ -12,9 +12,9 @@
   <table>
     <tr><th>Name:</th><td><%= @animal.name %></td></tr>
     <tr><th>Species:</th><td><%= @animal.species %></td></tr>
-    <tr><th>Breed:</th><td><%= @animal.breed %></td></tr>
+    <tr><th>Breed:</th><td><%= @animal.breed.presence || "Unknown" %></td></tr>
     <tr><th>Sex:</th><td><%= sex_to_readable(@animal) %></td></tr>
-    <tr><th>Age:</th><td><%= format_age(@animal) %></td></tr>
+    <tr><th>Age:</th><td><%= format_age(@animal).upcase_first %></td></tr>
     <tr><th>Adoption Status:</th><td><%= status_to_readable(@animal) %></td></tr>
     <tr><th>Vaccination Status:</th><td><%= @animal.vaccinated ? "Vaccinated" : "Not vaccinated" %></td></tr>
     <tr><th>Sterilization Status:</th><td><%= @animal.sterilized ? "Sterilized" : "Not sterilized" %></td></tr>

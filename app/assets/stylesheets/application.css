@@ -9,6 +9,10 @@
  * Consider organizing styles into separate files for maintainability.
  */
 
+#animals li {
+  margin: 10px 0;
+}
+
 .flash {
   padding: 10px;
   margin: 10px 0;

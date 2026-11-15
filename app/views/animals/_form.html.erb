@@ -23,7 +23,7 @@
 
   <div>
     <%= form.label :sex, style: "display: block" %>
-    <%= form.select :sex, ["M", "F"], { prompt: "Select a sex" } %>
+    <%= form.select :sex, [["Male", "M"], ["Female", "F"]], { prompt: "Select a sex" } %>
   </div>
 
   <div>
@@ -53,7 +53,7 @@
 
   <div>
     <%= form.label :adoption_status, style: "display: block" %>
-    <%= form.select :adoption_status, ["available", "pending", "adopted"], { prompt: "Select adoption status" } %>
+    <%= form.select :adoption_status, [["Available", "available"], ["Pending adoption", "pending"], ["Adopted", "adopted"]], { prompt: "Select adoption status" } %>
   </div>
 
   <div>
