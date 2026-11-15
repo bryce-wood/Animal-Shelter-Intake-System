@@ -1,10 +1,33 @@
+<% content_for :title, display_name(@animal) %>
+
 <p style="color: green"><%= notice %></p>
 
-<%= render @animal %>
+<div>
+  <h2><%= display_name(@animal) %></h2>
+</div>
 
 <div>
-  <%= link_to "Edit this animal", edit_animal_path(@animal) %> |
-  <%= link_to "Back to animals", animals_path %>
+  <%= link_to "<-- Back to list of all animals", animals_path %>
+</div>
 
-  <%= button_to "Destroy this animal", @animal, method: :delete %>
+<div>
+  <table>
+    <tr><th>Name:</th><td><%= @animal.name %></td></tr>
+    <tr><th>Species:</th><td><%= @animal.species %></td></tr>
+    <tr><th>Breed:</th><td><%= @animal.breed %></td></tr>
+    <tr><th>Sex:</th><td><%= sex_to_readable(@animal) %></td></tr>
+    <tr><th>Age:</th><td><%= format_age(@animal) %></td></tr>
+    <tr><th>Adoption Status:</th><td><%= status_to_readable(@animal) %></td></tr>
+    <tr><th>Vaccination Status:</th><td><%= @animal.vaccinated ? "Vaccinated" : "Not vaccinated" %></td></tr>
+    <tr><th>Sterilization Status:</th><td><%= @animal.sterilized ? "Sterilized" : "Not sterilized" %></td></tr>
+    <tr><th>Intake Date:</th><td><%= @animal.intake_date.to_fs(:long) %></td></tr>
+    <tr><th>Notes:</th><td><%= simple_format(@animal.notes.presence || "No notes") %></td></tr>
+  </table>
+  <p><em>(Added <%= time_ago_in_words(@animal.created_at) %> ago)</em></p>
+</div>
+
+<div>
+  <%= link_to "Edit this animal", edit_animal_path(@animal) %>
+
+  <%= button_to "Delete", @animal, method: :delete, form: { data: { turbo_confirm: "This will delete the entry for #{@animal.name}. Confirm?" } } %>
 </div>

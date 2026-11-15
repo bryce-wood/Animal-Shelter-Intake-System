@@ -1,6 +1,6 @@
 <div id="<%= dom_id animal %>">
   <div>
-    <strong><%= link_to "#{animal.name} the #{animal.species}", animal %></strong>
+    <strong><%= link_to display_name(animal), animal %></strong>
     <% if animal.sex.present? %>
       (<%= animal.sex %>)
     <% end %>
@@ -11,10 +11,10 @@
 
   <div>
     <% if animal.age_in_months.present? %>
-      <%= animal.name %> is <%= pluralize(animal.age_in_months, "month") %> old.
+      <%= animal.name %> is <%= format_age(animal) %>.
     <% end %>
     <% if animal.intake_date.present? %>
-      We received <%= animal.name %> on <%= animal.intake_date %>
+      We received <%= animal.name %> on <%= animal.intake_date.to_fs(:long) %>
     <% end %>
   </div>
 
@@ -26,3 +26,4 @@
   <div>
     <em>(Entry created <%= time_ago_in_words(animal.created_at) %> ago)</em>
   </div>
+</div>
